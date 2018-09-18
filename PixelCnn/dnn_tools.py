@@ -55,7 +55,7 @@ def encode_to_tf_records(label_file, data_root, new_name='data.tf_records', resi
             writer.write(serialized)
             num_example += 1
 
-    print label_file, "样本数据量：", num_example
+    print(label_file, "样本数据量：", num_example)
 
     writer.close()
 
@@ -170,13 +170,13 @@ def test_tfrecord():
             # image_np,label_np=session.run([image,label]) #每调用run一次，那么
             # '''cv2.imshow("temp",image_np)
             # cv2.waitKey()'''
-            # print label_np
-            # print image_np.shape
+            # print(label_np)
+            # print(image_np.shape)
 
             batch_image_np, batch_label_np = session.run([batch_image, batch_label])
 
-            print batch_image_np.shape
-            print batch_label_np.shape
+            print(batch_image_np.shape)
+            print(batch_label_np.shape)
 
         coord.request_stop()  # queue需要关闭，否则报错
         coord.join(threads)
@@ -345,16 +345,16 @@ def train():
             tf.train.Saver(max_to_keep=None).restore(session, os.path.join("model", 'model.ckpt'))
         while iter < max_iter:
             loss_np, _, label_np, image_np, inf_np = session.run([loss, optimizer, batch_label, batch_image, inf])
-            # print image_np.shape
+            # print(image_np.shape)
             # cv2.imshow(str(label_np[0]),image_np[0])
-            # print label_np[0]
+            # print(label_np[0])
             # cv2.waitKey()
-            # print label_np
+            # print(label_np)
             if iter % 50 == 0:
-                print 'trainloss:', loss_np
+                print('train loss:', loss_np)
             if iter % 500 == 0:
                 accuracy_np = session.run([accuracy])
-                print '***************test accruacy:', accuracy_np, '*******************'
+                print('***************test accruacy:', accuracy_np, '*******************')
                 tf.train.Saver(max_to_keep=None).save(session, os.path.join('model', 'model.ckpt'))
             iter += 1
 

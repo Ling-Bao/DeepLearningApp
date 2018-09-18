@@ -1,6 +1,7 @@
 # 环境配置
-* Tensorflow 1.0
-* Python 2.7
+* Tensorflow 1.0.0
+* Python 3.x
+* numpy
 * Ubuntu 16.04
 
 ---

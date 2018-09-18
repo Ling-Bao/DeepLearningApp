@@ -1,5 +1,6 @@
-# Tensorflow 版本
-* 0.11
+# 环境配置
+* Tensorflow 1.0.0
+* Python 3.x
 
 ---
 # 功能
